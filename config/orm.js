@@ -1,9 +1,21 @@
 var connection = require("./connection.js");
 
-// The ?? signs are for swapping out table or column names
-// The ? signs are for swapping out other values
-// These help avoid SQL injection
-// https://en.wikipedia.org/wiki/SQL_injection
+function printQuestionMarks(num) {
+  var arr = [];
+  for (var i = 0; i < num; i++) {
+    arr.push("?");
+  }
+  return arr.toString();
+}
+
+function objToSql(ob) {
+  var arr = [];
+  for (var key in ob) {
+    arr.push(key + "=" + ob[key]);
+  }
+  return arr.toString();
+}
+
 var orm = {
     selectAll: function(tableInput, cb) {
         var queryString = "SELECT * FROM " + tableInput + ";";
@@ -14,6 +26,7 @@ var orm = {
           cb(result);
         });
       },
+
       insertOne: function(table, cols, vals, cb) {
         var queryString = "INSERT INTO " + table;
     
@@ -34,6 +47,7 @@ var orm = {
           cb(result);
         });
       },
+
     updateOne: function(table, objColVals, condition, cb) {
         var queryString = "UPDATE " + table;
     
@@ -50,6 +64,6 @@ var orm = {
     
           cb(result);
         });
-      },
+      }
   };
   module.exports = orm;

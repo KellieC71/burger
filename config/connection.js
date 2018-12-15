@@ -1,10 +1,11 @@
+var mysql = require("mysql");
 
 var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
     password: "root",
-    database: "burger_db"
+    database: "burgers_db"
   });
   
   connection.connect(function(err) {
@@ -12,6 +13,5 @@ var connection = mysql.createConnection({
       console.error("error connecting: " + err.stack);
       return;
     }
-  
     console.log("connected as id " + connection.threadId);
   });

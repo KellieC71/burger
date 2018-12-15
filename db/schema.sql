@@ -1,5 +1,6 @@
-CREATE DATABASE burger_db;
-USE burger_db;
+CREATE DATABASE burgers_db;
+USE burgers_db;
+DROP TABLE IF EXISTS burgers;
 
 CREATE TABLE burgers 
 (
@@ -7,10 +8,4 @@ CREATE TABLE burgers
     burger_name varchar(255),
     devoured BOOLEAN default false, 
     PRIMARY KEY (id)
-
 );
-
-
-
--- Insert a set of records.
-INSERT INTO burgers (burger) VALUES ('cheese burger');
