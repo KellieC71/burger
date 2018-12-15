@@ -4,8 +4,8 @@ DROP TABLE IF EXISTS burgers;
 
 CREATE TABLE burgers 
 (
-    id int NOT NULL, 
-    burger_name varchar(255),
+    id int NOT NULL AUTO_INCREMENT, 
+    burger_name varchar(255) NOT_NULL,
     devoured BOOLEAN default false, 
     PRIMARY KEY (id)
 );
